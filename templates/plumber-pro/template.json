@@ -1,0 +1,37 @@
+{
+  "slug": "plumber-pro",
+  "name": "Plumber Pro",
+  "description": "Complete service business website with services, service areas, testimonials, FAQs, and blog. Perfect for plumbers, HVAC, electricians, and other service businesses.",
+  "industry": "plumber",
+  "version": "1.0.0",
+  "schemaVersion": "1.0",
+  "features": {
+    "services": true,
+    "serviceAreas": true,
+    "testimonials": true,
+    "faqs": true,
+    "blog": true,
+    "contactForm": true,
+    "team": true
+  },
+  "pages": [
+    "home",
+    "about",
+    "services",
+    "service-areas",
+    "articles",
+    "contact",
+    "privacy-policy",
+    "terms-and-conditions"
+  ],
+  "defaultTokens": {
+    "colorMode": "dark",
+    "primaryColor": "#2563eb",
+    "primaryHover": "#1d4ed8",
+    "secondaryColor": "#0ea5e9",
+    "accentColor": "#f59e0b",
+    "fontHeading": "Inter",
+    "fontBody": "Inter",
+    "radius": "0.5rem"
+  }
+}

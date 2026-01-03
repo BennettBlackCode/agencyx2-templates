@@ -1,0 +1,469 @@
+@import "tailwindcss";
+
+/* ============================================
+   BOLDSLATE TEMPLATE THEME SYSTEM
+   All colors use CSS variables for easy theming
+   ============================================ */
+
+@theme {
+  /* Brand Colors - Injected from DB */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-secondary: #0ea5e9;
+  --color-accent: #f59e0b;
+
+  /* Mode-specific colors - Set by JS based on color_mode */
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-surface-alt: #334155;
+  --color-text: #f8fafc;
+  --color-text-body: #cbd5e1;
+  --color-text-muted: #64748b;
+  --color-border: #334155;
+
+  /* Typography - Injected from DB */
+  --font-heading: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Responsive text sizes */
+  --text-display: clamp(2.5rem, 5vw, 4rem);
+  --text-h1: clamp(2rem, 4vw, 3rem);
+  --text-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --text-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --text-body-size: 1rem;
+  --text-small: 0.875rem;
+
+  /* Spacing */
+  --space-section: clamp(4rem, 10vw, 6rem);
+  --space-container: clamp(1rem, 5vw, 2rem);
+
+  /* Border radius */
+  --radius: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.25);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text-body);
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+/* ============================================
+   TYPOGRAPHY CLASSES
+   ============================================ */
+
+.text-display {
+  font-family: var(--font-heading);
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.text-h1 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.text-h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.text-h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+.text-body {
+  font-size: var(--text-body-size);
+  line-height: 1.7;
+}
+
+.text-body-lg {
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.text-small {
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+
+/* Text colors */
+.text-heading { color: var(--color-text); }
+.text-body-color { color: var(--color-text-body); }
+.text-muted { color: var(--color-text-muted); }
+.text-primary { color: var(--color-primary); }
+.text-white { color: #ffffff; }
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+}
+.btn-secondary:hover {
+  background-color: var(--color-surface);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-white {
+  background-color: white;
+  color: var(--color-primary);
+}
+.btn-white:hover {
+  background-color: #f1f5f9;
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-text-body);
+}
+.btn-ghost:hover {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.0625rem;
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.card-hover {
+  transition: all 0.25s ease;
+}
+.card-hover:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Feature boxes - for icon+text combos */
+.feature-box {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.section {
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
+}
+
+.section-sm {
+  padding-top: calc(var(--space-section) * 0.6);
+  padding-bottom: calc(var(--space-section) * 0.6);
+}
+
+.section-alt {
+  background-color: var(--color-surface);
+}
+
+.container {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-container);
+  padding-right: var(--space-container);
+}
+
+.container-narrow {
+  max-width: 48rem;
+}
+
+.container-wide {
+  max-width: 80rem;
+}
+
+/* ============================================
+   BACKGROUNDS
+   ============================================ */
+
+.bg-background { background-color: var(--color-background); }
+.bg-surface { background-color: var(--color-surface); }
+.bg-surface-alt { background-color: var(--color-surface-alt); }
+.bg-primary { background-color: var(--color-primary); }
+
+/* Hero background with overlay */
+.hero-bg {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.7));
+  z-index: 1;
+}
+
+.hero-bg > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================
+   BORDERS
+   ============================================ */
+
+.border-default { border-color: var(--color-border); }
+.divide-default > * + * { border-color: var(--color-border); }
+
+/* ============================================
+   FORMS
+   ============================================ */
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   STAR RATING (Always yellow)
+   ============================================ */
+
+.star-filled { color: #facc15; }
+.star-empty { color: var(--color-surface-alt); }
+
+/* ============================================
+   PROSE (Content styling)
+   ============================================ */
+
+.prose {
+  color: var(--color-text-body);
+  line-height: 1.8;
+}
+
+.prose h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose h3 {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+}
+
+.prose ul, .prose ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.prose a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.prose a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ============================================
+   FAQ ACCORDION
+   ============================================ */
+
+.faq-item {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  padding: 1.25rem 1.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item[open] summary {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-content {
+  padding: 1.25rem 1.5rem;
+  color: var(--color-text-body);
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Line clamp */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}

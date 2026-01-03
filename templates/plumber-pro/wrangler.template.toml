@@ -1,0 +1,18 @@
+# Template Wrangler Configuration
+# Placeholders are replaced during site provisioning:
+# - {{site_slug}}: URL-safe site identifier
+# - {{d1_database_id}}: UUID of the provisioned D1 database
+# - {{r2_bucket_name}}: Name of the provisioned R2 bucket
+
+name = "{{site_slug}}"
+compatibility_date = "2024-12-01"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "{{site_slug}}-db"
+database_id = "{{d1_database_id}}"
+
+[[r2_buckets]]
+binding = "STORAGE"
+bucket_name = "{{r2_bucket_name}}"
